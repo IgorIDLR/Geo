@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>ru.geodesy</groupId>
+    <artifactId>geodesy-adjust-parent</artifactId>
+    <version>18.5.0</version>
+    <packaging>pom</packaging>
+
+    <name>GeodesyNetworkAdjustment Parent</name>
+
+    <modules>
+        <module>geodesy-common</module>
+        <module>geodesy-model</module>
+        <module>geodesy-config</module>
+        <module>geodesy-parser</module>
+        <module>geodesy-validation</module>
+        <module>geodesy-adjustment</module>
+        <module>geodesy-transformation</module>
+        <module>geodesy-design</module>
+        <module>geodesy-session</module>
+        <module>geodesy-deformation</module>
+    </modules>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <ejml.version>0.43.1</ejml.version>
+        <commons-math.version>3.6.1</commons-math.version>
+        <lombok.version>1.18.34</lombok.version>
+        <jenetics.version>7.2.0</jenetics.version>
+        <proj4j.version>1.4.0</proj4j.version>
+    </properties>
+
+    <!-- ============================================================ -->
+    <!-- УПРАВЛЕНИЕ ВЕРСИЯМИ                                          -->
+    <!-- Здесь ВСЕ внутренние модули + внешние библиотеки с версиями -->
+    <!-- НЕ наследуется автоматически дочерними модулями              -->
+    <!-- ============================================================ -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Внутренние модули -->
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-parser</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-validation</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-adjustment</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-transformation</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-design</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-session</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.geodesy</groupId>
+                <artifactId>geodesy-deformation</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Внешние библиотеки -->
+            <dependency>
+                <groupId>org.ejml</groupId>
+                <artifactId>ejml-all</artifactId>
+                <version>${ejml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons-math.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenetics</groupId>
+                <artifactId>jenetics</artifactId>
+                <version>${jenetics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.locationtech.proj4j</groupId>
+                <artifactId>proj4j</artifactId>
+                <version>${proj4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.locationtech.proj4j</groupId>
+                <artifactId>proj4j-epsg</artifactId>
+                <version>${proj4j.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ============================================================ -->
+    <!-- ОБЩИЕ ЗАВИСИМОСТИ ВСЕХ МОДУЛЕЙ                              -->
+    <!-- Только Lombok, Spring Boot Test, AssertJ                    -->
+    <!-- НИЧЕГО из ru.geodesy:* !                                    -->
+    <!-- ============================================================ -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <release>21</release>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,30 @@
+geodesy:
+  transformation:
+    default-method: HELMERT
+    systems:
+      WGS84:
+        id: "EPSG:4326"
+        name: "WGS84"
+        datum: { semiMajor: 6378137.0, flattening: 0.0033528106647474805 }
+        toWgs84: [0, 0, 0, 0, 0, 0, 0]
+      SK42:
+        id: "SK42"
+        name: "СК-42"
+        datum: { semiMajor: 6378245.0, flattening: 0.00335232986925913 }
+        toWgs84: [23.92, -141.27, -80.9, 0, -0.35, -0.82, -0.12]
+      SK95:
+        id: "SK95"
+        name: "СК-95"
+        datum: { semiMajor: 6378245.0, flattening: 0.00335232986925913 }
+        toWgs84: [24.82, -131.21, -82.66, 0, -0.16, -0.12, -0.02]
+      GK_ZONE_7:
+        id: "GK7"
+        name: "Гаусса-Крюгера зона 7"
+        datum: { semiMajor: 6378245.0, flattening: 0.00335232986925913 }
+        projection:
+          type: "GAUSS_KRUGER"
+          centralMeridian: 39.0
+          falseEasting: 7500000
+          falseNorthing: 0
+          scaleFactor: 1.0
+        toWgs84: [23.92, -141.27, -80.9, 0, -0.35, -0.82, -0.12]

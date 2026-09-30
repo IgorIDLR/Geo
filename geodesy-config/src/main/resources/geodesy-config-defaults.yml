@@ -1,0 +1,50 @@
+# Значения по умолчанию для модуля geodesy-config.
+# Подгружается автоматически как fallback.
+# При наличии в application.yml значения из application.yml
+# переопределяют эти.
+
+geodesy:
+  tolerances:
+    plan:
+      class1: { angle-sigma: 0.7,  relative-dist: "1:1000000" }
+      class2: { angle-sigma: 1.0,  relative-dist: "1:250000"  }
+      class3: { angle-sigma: 2.0,  relative-dist: "1:100000"  }
+      class4: { angle-sigma: 3.0,  relative-dist: "1:25000"   }
+      razr1:  { angle-sigma: 5.0,  relative-dist: "1:10000"   }
+      razr2:  { angle-sigma: 10.0, relative-dist: "1:5000"    }
+    height:
+      class1: { height-sigma: 0.8 }
+      class2: { height-sigma: 2.0 }
+      class3: { height-sigma: 5.0 }
+      class4: { height-sigma: 10.0 }
+
+  instruments:
+    props:
+      tacheometer-1s:
+        angle-sigma: 1.0
+        distance-sigma-mm: 1.0
+        distance-sigma-ppm: 1.5
+      tacheometer-3s:
+        angle-sigma: 3.0
+        distance-sigma-mm: 2.0
+        distance-sigma-ppm: 2.0
+      tacheometer-5s:
+        angle-sigma: 5.0
+        distance-sigma-mm: 3.0
+        distance-sigma-ppm: 3.0
+      level-h2:
+        height-sigma-km: 0.7
+      level-h3:
+        height-sigma-km: 1.5
+      level-h5:
+        height-sigma-km: 2.5
+      gnss-l1:
+        horizontal-sigma-mm: 8.0
+        horizontal-sigma-ppm: 1.0
+        vertical-sigma-mm: 15.0
+        vertical-sigma-ppm: 2.0
+      gnss-l2:
+        horizontal-sigma-mm: 15.0
+        horizontal-sigma-ppm: 2.0
+        vertical-sigma-mm: 25.0
+        vertical-sigma-ppm: 3.0
